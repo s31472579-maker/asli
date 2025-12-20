@@ -350,6 +350,32 @@
             transform: translateY(-50%);
         }
     }
+    /* استایل مودال جدید وبلاگ */
+.blog-modal-overlay { 
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+  background: rgba(0,0,0,0.85); z-index: 5000; 
+  display: none; justify-content: center; align-items: center; 
+  backdrop-filter: blur(8px); opacity: 0; transition: 0.3s; 
+}
+.blog-modal-overlay.active { display: flex; opacity: 1; }
+.blog-modal-box { 
+  background: var(--bg-card); width: 90%; max-width: 750px; 
+  height: 85vh; border-radius: 25px; display: flex; 
+  flex-direction: column; overflow: hidden; box-shadow: 0 25px 60px rgba(0,0,0,0.5); 
+  transform: translateY(30px); transition: 0.3s;
+}
+.blog-modal-overlay.active .blog-modal-box { transform: translateY(0); }
+.blog-modal-header { 
+  background: var(--primary-green); color: white; padding: 20px; 
+  display: flex; justify-content: space-between; align-items: center; 
+  font-weight: bold; font-size: 1.2rem;
+}
+.blog-modal-body { 
+  flex: 1; padding: 35px; overflow-y: auto; text-align: justify; 
+  line-height: 2; font-size: 1rem; color: var(--text-main); 
+}
+.blog-modal-body h4 { color: var(--primary-green); margin-top: 25px; margin-bottom: 10px; border-right: 4px solid var(--primary-green); padding-right: 12px; }
+.blog-modal-body ul { margin-bottom: 20px; padding-right: 30px; list-style-type: circle; }
 
     /* استایل چاپ */
     @media print {
@@ -393,6 +419,23 @@
   </style>
 </head>
 <body onload="initSite()">
+
+    <!-- مودال نمایش متن کامل وبلاگ -->
+<div class="blog-modal-overlay" id="blogModal" onclick="closeBlog()">
+    <div class="blog-modal-box" onclick="event.stopPropagation()">
+        <div class="blog-modal-header">
+            <span id="blogFullTitle">عنوان مقاله</span>
+            <i class='bx bx-x' onclick="closeBlog()" style="cursor:pointer; font-size:1.8rem;"></i>
+        </div>
+        <div class="blog-modal-body" id="blogFullContent">
+            <!-- محتوای مقاله توسط جاوااسکریپت اینجا قرار می‌گیرد -->
+        </div>
+        <div class="blog-modal-footer">
+            <span id="blogFullDate" style="font-size:0.8rem; color:var(--text-light)"></span>
+            <button onclick="closeBlog()" class="btn-open-price" style="padding: 5px 15px; font-size: 0.8rem;">بستن مقاله</button>
+        </div>
+    </div>
+</div>
 
 <!-- لودر و پروگرس بار -->
 <div id="progress-container"><div id="progress-bar"></div></div>
@@ -443,7 +486,7 @@
                 <div class="stat-box"><span id="stat-customers" class="stat-number" data-target="1200">0</span><span class="stat-label">مشتری راضی</span></div>
                 <div class="stat-box"><span id="stat-projects" class="stat-number" data-target="500">0</span><span class="stat-label">پروژه موفق</span></div>
                 <div class="stat-box"><span id="stat-experience" class="stat-number" data-target="15">0</span><span class="stat-label">سال تجربه</span></div>
-                <div class="stat-box"><span id="stat-tons" class="stat-number" data-target="25000">0</span><span class="stat-label">تامین تن کالا</span></div>
+                <div class="stat-box"><span id="stat-tons" class="stat-number" data-target="2500">0</span><span class="stat-label">تامین تن کالا</span></div>
             </div>
         </div>
     </div>
@@ -600,11 +643,7 @@
     
     <!-- فرم درخواست تماس -->
     <div style="margin-top:40px; border-top:1px solid var(--border-color); padding-top:30px;">
-        <h3 class="text-center mb-20">درخواست تماس فوری</h3>
-        <form class="row" onsubmit="event.preventDefault(); showToast('درخواست شما ثبت شد. با شما تماس می‌گیریم.');">
-            <div class="col-4"><input type="text" class="form-control" placeholder="نام و نام خانوادگی" required></div>
-            <div class="col-4"><input type="tel" class="form-control" placeholder="شماره تماس" required></div>
-            <div class="col-4"><button type="submit" class="btn-open-price w-full justify-center">ثبت درخواست</button></div>
+
         </form>
     </div>
   </section>
@@ -920,12 +959,11 @@
     const catDefinitions = [
         {key: 'cement', icon: 'icon-cement', icoClass: 'bxs-component', label: 'سیمان و پودر'},
         {key: 'plaster', icon: 'icon-plaster', icoClass: 'bxs-layer', label: 'گچ و خاک'},
-        {key: 'brick', icon: 'icon-brick', icoClass: 'bxs-grid-alt', label: 'انواع آجر'},
+        {key: 'brick', icon: 'icon-brick', icoClass: 'bxs-grid-alt', label: 'آجر دستی و فشاری'},
         {key: 'heblex', icon: 'icon-heblex', icoClass: 'bxs-cuboid', label: 'بلوک هبلکس'},
         {key: 'sand', icon: 'icon-sand', icoClass: 'bxs-pyramid', label: 'شن و ماسه'},
         {key: 'glue', icon: 'icon-glue', icoClass: 'bxs-flask', label: 'چسب و افزودنی'},
         {key: 'iso', icon: 'icon-iso', icoClass: 'bxs-droplet', label: 'ایزوگام'},
-        {key: 'steel', icon: 'icon-steel', icoClass: 'bx-wrench', label: 'آهن آلات'}
     ];
     const defaultCatStates = { cement:true, plaster:true, brick:true, heblex:true, sand:true, glue:true, iso:true, steel:true };
 
@@ -1606,6 +1644,7 @@
     }
     
     window.addEventListener('resize', resizeCanvas);
+    
 
     /* =========================================
        *** منطق ماشین حساب ***
@@ -1694,7 +1733,70 @@
             display.value = 'Error';
             setTimeout(() => calcClear(), 1500);
         }
+        /* دیتابیس مقالات وبلاگ */
+const blogPostsDB = [
+    {
+        id: 1,
+        title: "مزایای استفاده از بلوک هبلکس در ساختمان‌های مدرن",
+        date: "1402/10/01",
+        content: `
+            <p>بلوک هبلکس (Heblex) یا بتن هوادار اتوکلاو شده، تحولی بزرگ در صنعت ساختمان ایجاد کرده است.</p>
+            <h4>چرا هبلکس را انتخاب کنیم؟</h4>
+            <ul>
+                <li><strong>عایق حرارت و صوت:</strong> ساختار متخلخل این بلوک‌ها باعث می‌شود تا ۵۰٪ از اتلاف انرژی جلوگیری شود.</li>
+                <li><strong>وزن سبک:</strong> وزن هبلکس حدود یک‌سوم آجر معمولی است که باعث کاهش بار مرده ساختمان می‌شود.</li>
+                <li><strong>سرعت اجرای بالا:</strong> ابعاد بزرگتر نسبت به آجر، سرعت دیوارچینی را تا ۳ برابر افزایش می‌دهد.</li>
+            </ul>
+            <p>این بلوک‌ها همچنین در برابر آتش‌سوزی بسیار مقاوم هستند و کارپذیری بالایی دارند.</p>
+        `
+    },
+    {
+        id: 2,
+        title: "تحلیل جامع قیمت سیمان و چالش‌های فصل زمستان",
+        date: "1402/09/25",
+        content: `
+            <p>صنعت سیمان در فصل زمستان با چالش‌های جدی گاز و حمل و نقل روبروست.</p>
+            <h4>نکات کلیدی بازار سیمان:</h4>
+            <p>با قطع شدن گاز صنایع، هزینه تولید بالا می‌رود. پیشنهاد می‌شود پروژه‌ها سیمان مورد نیاز خود را پیش از اوج سرما تامین کنند.</p>
+        `
+    },
+    {
+        id: 3,
+        title: "راهنمای تخصصی انتخاب چسب کاشی و سرامیک",
+        date: "1402/09/10",
+        content: `
+            <p>دوران استفاده از ماسه و سیمان برای نصب کاشی‌های مدرن به پایان رسیده است.</p>
+            <h4>انواع چسب‌های پیشنهادی:</h4>
+            <p>چسب‌های پودری پرسلان مخصوص سرامیک‌های بزرگ و چسب‌های خمیری برای بازسازی روی سطوح قدیمی بهترین انتخاب هستند.</p>
+        `
     }
+];
+
+/* توابع باز و بسته کردن وبلاگ */
+function openBlog(id) {
+    const post = blogPostsDB.find(p => p.id === id);
+    if(!post) return;
+
+    document.getElementById('blogFullTitle').innerText = post.title;
+    document.getElementById('blogFullContent').innerHTML = post.content;
+    document.getElementById('blogFullDate').innerText = "تاریخ انتشار: " + post.date;
+
+    const modal = document.getElementById('blogModal');
+    modal.style.display = 'flex';
+    setTimeout(() => modal.classList.add('active'), 10);
+    document.body.style.overflow = 'hidden'; // جلوگیری از اسکرول صفحه زیرین
+}
+
+function closeBlog() {
+    const modal = document.getElementById('blogModal');
+    modal.classList.remove('active');
+    setTimeout(() => {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }, 300);
+}
+    }
+    
 </script>
 </body>
 </html>

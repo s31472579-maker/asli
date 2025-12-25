@@ -968,7 +968,40 @@
     const defaultCatStates = { cement:true, plaster:true, brick:true, heblex:true, sand:true, glue:true, iso:true, steel:true };
 
     const defaultProducts = [
+        // --- سیمان و پودر ---
+        { id: 101, name: "سیمان تیپ 2 پاکتی - یزد", unit: "کیسه 50ک", price: "72,500", status: "ok" },
+        { id: 102, name: "سیمان تیپ 2 فله - یزد", unit: "تن", price: "1,150,000", status: "ok" },
+        { id: 103, name: "سیمان تیپ 5 پاکتی - یزد", unit: "کیسه 50ک", price: "76,000", status: "ok" },
+        { id: 104, name: "سیمان سفید - بنوید", unit: "کیسه 40ک", price: "105,000", status: "ok" },
+        { id: 105, name: "سیمان سفید - ساوه", unit: "کیسه 40ک", price: "112,000", status: "ok" },
+        { id: 106, name: "پودر سنگ سوپر - قم", unit: "کیسه", price: "18,000", status: "ok" },
+        { id: 107, name: "سیمان تیپ 1 - فله", unit: "تن", price: "1,080,000", status: "ok" },
+        { id: 108, name: "آهک هیدراته صنعتی", unit: "کیسه 30ک", price: "55,000", status: "ok" },
+        { id: 109, name: "سیمان پوزولانی - پاکتی", unit: "کیسه 50ک", price: "69,000", status: "ok" },
+        { id: 110, name: "سیمان سفید - نی ریز", unit: "کیسه 40ک", price: "102,000", status: "ok" },
 
+        // --- آهن آلات و میلگرد ---
+        { id: 201, name: "میلگرد 8 آجدار - A2 بافق", unit: "کیلوگرم", price: "28,200", status: "ok" },
+        { id: 202, name: "میلگرد 10 آجدار - A3 بافق", unit: "کیلوگرم", price: "27,900", status: "ok" },
+        { id: 203, name: "میلگرد 12 آجدار - A3 یزد", unit: "کیلوگرم", price: "27,500", status: "ok" },
+        { id: 204, name: "میلگرد 14 آجدار - A3 احرامیان", unit: "کیلوگرم", price: "27,400", status: "ok" },
+        { id: 205, name: "میلگرد 16 آجدار - A3 احرامیان", unit: "کیلوگرم", price: "27,400", status: "ok" },
+        { id: 206, name: "میلگرد 18 آجدار - A3 یزد", unit: "کیلوگرم", price: "27,300", status: "ok" },
+        { id: 207, name: "میلگرد 20 آجدار - A3 یزد", unit: "کیلوگرم", price: "27,300", status: "ok" },
+        { id: 208, name: "تیرآهن 14 - ذوب آهن اصفهان", unit: "شاخه 12م", price: "4,350,000", status: "ok" },
+        { id: 209, name: "تیرآهن 16 - ذوب آهن اصفهان", unit: "شاخه 12م", price: "5,400,000", status: "ok" },
+        { id: 210, name: "تیرآهن 18 - ذوب آهن اصفهان", unit: "شاخه 12م", price: "6,900,000", status: "ok" },
+        { id: 211, name: "نبشی 4*40*40 - یزد", unit: "شاخه 6م", price: "1,150,000", status: "ok" },
+        { id: 212, name: "ناودانی 10 - هموزن اروپایی", unit: "شاخه 6م", price: "1,850,000", status: "ok" },
+        { id: 213, name: "پروفیل 2*40*40 - جهان", unit: "کیلوگرم", price: "36,500", status: "ok" },
+        { id: 214, name: "خاموت آماده - مهندسی", unit: "کیلوگرم", price: "29,500", status: "ok" },
+        { id: 215, name: "میلگرد 22 آجدار - یزد", unit: "کیلوگرم", price: "27,300", status: "ok" },
+        { id: 216, name: "میلگرد 25 آجدار - یزد", unit: "کیلوگرم", price: "27,450", status: "ok" },
+
+        // --- هبلکس و اتصالات ---
+        { id: 301, name: "بلوک هبلکس 10*20*60 - رضوی", unit: "متر مکعب", price: "1,480,000", status: "ok" },
+        { id: 302, name: "بلوک هبلکس 15*20*60 - رضوی", unit: "متر مکعب", price: "1,480,000", status: "ok" },
+        { id: 303, name: "بلوک هبلکس 20*25*60 - رضوی", unit: "متر مکعب", price: "1,480,000", status: "ok" },
     ];
 
     /* =========================================
@@ -985,7 +1018,6 @@
         initTheme(); 
         initParticles(); 
         loadStats(); 
-        // Weather removed
     }
 
     // --- مدیریت تم ---
@@ -1138,7 +1170,6 @@
         }
     }
 
-    // --- لاگین ادمین (با منطق جدید محدودیت کاربر 1379) ---
     function checkAndLogin() {
         const u = document.getElementById('adminUser').value;
         const p = document.getElementById('adminPass').value;
@@ -1158,78 +1189,57 @@
             const adminWrapper = document.getElementById('admin-main-wrapper');
             adminWrapper.style.display = 'block';
             
-            // باز کردن خودکار داشبورد
             setTimeout(() => {
                 if(!document.getElementById('admin-dashboard-content').classList.contains('open')){
                     toggleAdminDashboard();
                 }
             }, 100);
 
-            // نمایش ستون عملیات در جدول
             document.querySelectorAll('.admin-col').forEach(el => el.style.display = 'table-cell');
-            
-            // پاکسازی فیلدها
             document.getElementById('adminUser').value = '';
             document.getElementById('adminPass').value = '';
             
-            // باز کردن مودال اصلی
             togglePriceModal();
             loadProducts(); 
             renderAdminCategoryToggles();
             showToast("خوش آمدید، پنل مدیریت فعال شد", "success");
             
-            // مدیریت دسترسی‌ها
             const reviewBtn = document.getElementById('btn-reviews-panel');
             const statsPanel = document.getElementById('admin-stats-wrapper');
 
-            // 1. دسترسی سوپرادمین به نظرات
             if(user.role === 'superadmin') {
                 reviewBtn.style.display = 'flex';
-                showReviewsPanel();
             } else {
                 reviewBtn.style.display = 'none';
             }
 
-            // 2. محدودیت کاربر 1379 برای ویرایش آمار
             if(user.u === '1379') {
-                statsPanel.style.display = 'none'; // مخفی کردن پنل آمار
+                statsPanel.style.display = 'none';
             } else {
-                statsPanel.style.display = 'block'; // نمایش برای سایرین
+                statsPanel.style.display = 'block';
             }
 
-            // لود مقادیر فعلی آمار در اینپوت‌ها
             const st = JSON.parse(localStorage.getItem('siteStats')) || defaultStats;
             document.getElementById('edit-customers').value = st.customers; 
             document.getElementById('edit-projects').value = st.projects; 
             document.getElementById('edit-experience').value = st.experience;
         } else { 
             showToast("نام کاربری یا رمز عبور اشتباه است", "error"); 
-            const box = document.querySelector('.login-box');
-            box.style.animation = 'none';
-            box.offsetHeight; 
-            box.style.animation = 'shake 0.5s'; 
         }
     }
-    const styleSheet = document.createElement("style");
-    styleSheet.innerText = `@keyframes shake {0% { transform: translate(1px, 1px) rotate(0deg); } 10% { transform: translate(-1px, -2px) rotate(-1deg); } 20% { transform: translate(-3px, 0px) rotate(1deg); } 30% { transform: translate(3px, 2px) rotate(0deg); } 40% { transform: translate(1px, -1px) rotate(1deg); } 50% { transform: translate(-1px, 2px) rotate(-1deg); } 60% { transform: translate(-3px, 1px) rotate(0deg); } 70% { transform: translate(3px, 1px) rotate(-1deg); } 80% { transform: translate(-1px, -1px) rotate(1deg); } 90% { transform: translate(1px, 2px) rotate(0deg); } 100% { transform: translate(1px, -2px) rotate(-1deg); }}`;
-    document.head.appendChild(styleSheet);
 
     function logoutAdmin() { 
         isAdminMode = false; 
-        
         const content = document.getElementById('admin-dashboard-content');
         if(content.classList.contains('open')) toggleAdminDashboard(); 
-        
         setTimeout(() => {
             document.getElementById('admin-main-wrapper').style.display = 'none';
         }, 300);
-
         document.querySelectorAll('.admin-col').forEach(el => el.style.display = 'none');
         loadProducts(); 
         showToast("با موفقیت خارج شدید"); 
     }
 
-    // --- مدیریت آیتم‌ها ---
     function addProductLocal() {
         const name = document.getElementById('new-name').value;
         const unit = document.getElementById('new-unit').value;
@@ -1275,7 +1285,6 @@
         const acc = document.getElementById('add-acc');
         const head = document.getElementById('form-title').parentNode;
         if(!acc.classList.contains('active')) toggleAccordion('add-acc', head);
-        
         head.scrollIntoView({behavior: "smooth"});
     }
 
@@ -1355,22 +1364,12 @@
     function submitReview() {
         const name = document.getElementById('reviewName').value || 'کاربر ناشناس';
         const text = document.getElementById('reviewText').value;
-        
         if(!text.trim()) { showToast("لطفا متن نظر را بنویسید", "error"); return; }
         if(currentRating === 0) { showToast("لطفا امتیاز دهید", "error"); return; }
-
-        const newReview = {
-            id: Date.now(),
-            name: name,
-            text: text,
-            rating: currentRating,
-            date: new Date().toLocaleDateString('fa-IR')
-        };
-
+        const newReview = { id: Date.now(), name, text, rating: currentRating, date: new Date().toLocaleDateString('fa-IR') };
         let reviews = JSON.parse(localStorage.getItem('siteReviews')) || [];
         reviews.push(newReview);
         localStorage.setItem('siteReviews', JSON.stringify(reviews));
-
         document.getElementById('reviewText').value = '';
         document.getElementById('reviewName').value = '';
         document.getElementById('reviewSubmitModal').style.display = 'none';
@@ -1381,22 +1380,18 @@
         const container = document.getElementById('reviewListContainer');
         container.innerHTML = '';
         const reviews = JSON.parse(localStorage.getItem('siteReviews')) || [];
-
         if (reviews.length === 0) {
-            container.innerHTML = '<div style="text-align:center; padding:50px; color:#888;"><i class="bx bx-comment-x" style="font-size:3rem;"></i><p>هیچ نظری ثبت نشده است.</p></div>';
+            container.innerHTML = '<div style="text-align:center; padding:50px; color:#888;"><p>هیچ نظری ثبت نشده است.</p></div>';
         } else {
             reviews.reverse().forEach(r => {
                 let starsHtml = '';
-                for(let i=0; i<5; i++) {
-                    starsHtml += i < r.rating ? "<i class='bx bxs-star'></i>" : "<i class='bx bx-star'></i>";
-                }
-
+                for(let i=0; i<5; i++) { starsHtml += i < r.rating ? "<i class='bx bxs-star'></i>" : "<i class='bx bx-star'></i>"; }
                 container.innerHTML += `
                     <div class="review-card" style="background:var(--bg-body); padding:15px; border-radius:15px; margin-bottom:15px; border:1px solid var(--border-color); position:relative;">
-                        <i class='bx bxs-trash' onclick="deleteReview(${r.id})" style="position:absolute; top:15px; left:15px; color:var(--accent-red); cursor:pointer; font-size:1.2rem;"></i>
-                        <h5 style="margin:0 0 5px; color:var(--primary-green);">${r.name} <span class="review-stars-display">${starsHtml}</span></h5>
-                        <p style="margin:0; font-size:0.9rem;">${r.text}</p>
-                        <span style="font-size:0.7rem; color:var(--text-light); display:block; margin-top:8px;">${r.date}</span>
+                        <i class='bx bxs-trash' onclick="deleteReview(${r.id})" style="position:absolute; top:15px; left:15px; color:var(--accent-red); cursor:pointer;"></i>
+                        <h5>${r.name} <span class="review-stars-display">${starsHtml}</span></h5>
+                        <p>${r.text}</p>
+                        <span style="font-size:0.7rem; color:var(--text-light);">${r.date}</span>
                     </div>
                 `;
             });
@@ -1410,112 +1405,12 @@
             reviews = reviews.filter(r => r.id !== id);
             localStorage.setItem('siteReviews', JSON.stringify(reviews));
             showReviewsPanel();
-            showToast("نظر حذف شد", "error");
         }
-    }
-
-    /* =========================================
-       5. مدیریت وبلاگ
-       ========================================= */
-    const blogPostsDB = [
-        {
-            id: 1,
-            title: "مزایای استفاده از بلوک هبلکس در ساختمان‌های مدرن",
-            date: "1402/10/01",
-            content: `
-                <p>بلوک هبلکس (Heblex) یا بتن هوادار اتوکلاو شده (AAC)، یکی از مصالح نوین ساختمانی است که در سال‌های اخیر جایگاه ویژه‌ای در صنعت ساخت و ساز پیدا کرده است. این بلوک‌ها ترکیبی از سیلیس، سیمان، آهک و پودر آلومینیوم هستند که تحت فشار و دمای بالا در اتوکلاو پخته می‌شوند.</p>
-                <h4>1. عایق‌سازی فوق‌العاده</h4>
-                <p>مهم‌ترین ویژگی هبلکس، عایق بودن آن در برابر حرارت و صوت است. استفاده از این بلوک می‌تواند هزینه‌های سرمایش و گرمایش ساختمان را تا 30 درصد کاهش دهد. ساختار متخلخل این بلوک باعث می‌شود که هوا در داخل آن حبس شده و مانند یک لایه عایق عمل کند.</p>
-                <h4>2. کاهش وزن سازه</h4>
-                <p>وزن مخصوص هبلکس حدود 450 تا 550 کیلوگرم بر متر مکعب است که تقریباً یک‌سوم آجر فشاری و نصف بلوک‌های سفالی وزن دارد. این کاهش وزن باعث می‌شود که بار مرده ساختمان کم شده و در نتیجه مقاومت سازه در برابر زلزله افزایش یابد.</p>
-                <h4>3. سرعت اجرای بالا</h4>
-                <p>ابعاد بزرگ و دقیق بلوک‌های هبلکس (معمولاً 60x25 سانتیمتر) باعث می‌شود که دیوارچینی با سرعت بسیار بالایی انجام شود. همچنین به دلیل سطح صاف این بلوک‌ها، میزان گچ و خاک مورد نیاز برای سفیدکاری به حداقل می‌رسد.</p>
-                <h4>4. کارپذیری آسان</h4>
-                <p>هبلکس به راحتی با اره بریده می‌شود، میخ در آن فرو می‌رود و می‌توان مسیر لوله‌های تاسیسات را به آسانی در آن ایجاد کرد. این ویژگی باعث کاهش پرت مصالح و هزینه‌های اجرایی می‌شود.</p>
-                <p><strong>نتیجه‌گیری:</strong> اگرچه قیمت اولیه بلوک هبلکس ممکن است از سفال بیشتر باشد، اما با در نظر گرفتن حذف عایق‌کاری‌های جانبی، کاهش مصرف ملات و سرعت اجرا، در نهایت استفاده از آن اقتصادی‌تر خواهد بود.</p>
-            `
-        },
-        {
-            id: 2,
-            title: "تحلیل جامع قیمت سیمان و چالش‌های فصل زمستان",
-            date: "1402/09/25",
-            content: `
-                <p>صنعت سیمان ایران به عنوان یکی از صنایع انرژی‌بر، همواره در فصل زمستان با چالش‌های جدی روبرو است. اصلی‌ترین چالش، ناترازی گاز و قطع گاز کارخانجات سیمان توسط دولت برای تامین مصارف خانگی است.</p>
-                <h4>تاثیر قطع گاز بر تولید</h4>
-                <p>کارخانجات سیمان برای کوره های خود از گاز استفاده می‌کنند. با قطع گاز، این واحدها مجبور به استفاده از سوخت جایگزین (مازوت) می‌شوند. مازوت نه‌تنها هزینه‌های حمل و نقل بالایی دارد، بلکه باعث افزایش آلایندگی و گاهی کاهش کیفیت کلینکر تولیدی می‌شود. برخی کارخانجات نیز به دلیل مسائل زیست‌محیطی یا نبود زیرساخت مازوت‌سوزی، مجبور به کاهش یا توقف تولید می‌شوند.</p>
-                <h4>پیش‌بینی قیمت</h4>
-                <p>کاهش عرضه سیمان در زمستان معمولاً منجر به افزایش قیمت در بازار آزاد می‌شود. اگرچه تقاضای ساخت و ساز در فصل سرما کاهش می‌یابد، اما کاهش عرضه معمولاً شدیدتر است. تحلیلگران پیش‌بینی می‌کنند که در ماه‌های دی و بهمن، شاهد نوسان 10 تا 15 درصدی قیمت سیمان باشیم.</p>
-                <h4>راهکار برای سازندگان</h4>
-                <ul>
-                    <li><strong>خرید پیش از موعد:</strong> توصیه می‌شود پروژه‌های فعال، سیمان مورد نیاز یک ماه آینده خود را پیش از اوج سرما خریداری و انبار کنند.</li>
-                    <li><strong>انبارداری صحیح:</strong> سیمان باید در محیط خشک، روی پالت چوبی و با فاصله از دیوار نگهداری شود. استفاده از پوشش پلاستیکی برای جلوگیری از رطوبت‌زدگی الزامی است.</li>
-                </ul>
-                <p>بارمان مرکب کویر با داشتن ذخایر استراتژیک و قراردادهای مستقیم با کارخانجات، تلاش می‌کند نوسانات قیمت را برای مشتریان خود به حداقل برساند.</p>
-            `
-        },
-        {
-            id: 3,
-            title: "راهنمای تخصصی انتخاب چسب کاشی و سرامیک",
-            date: "1402/09/10",
-            content: `
-                <p>با ورود سرامیک‌های نسل جدید (پرسلان) و ابعاد اسلب (بزرگ)، روش‌های سنتی نصب با ملات ماسه سیمان دیگر پاسخگو نیستند. انتخاب چسب مناسب ضامن ماندگاری و ایمنی نمای ساختمان و فضای داخلی شماست.</p>
-                <h4>انواع چسب کاشی</h4>
-                <p><strong>1. چسب پودری (Cement-based):</strong></p>
-                <p>این چسب‌ها بر پایه سیمان و پلیمرهای اصلاح‌شده هستند و باید با آب مخلوط شوند.
-                <br>- <em>کاربرد:</em> کف و بدنه، محیط‌های مرطوب، کاشی‌های پرسلان.
-                <br>- <em>مزایا:</em> مقاومت بالا در برابر رطوبت، قیمت مناسب، چسبندگی عالی.</p>
-                <p><strong>2. چسب خمیری (Paste/Dispersion):</strong></p>
-                <p>این چسب‌ها آماده مصرف هستند و نیاز به افزودن آب ندارند.
-                <br>- <em>کاربرد:</em> کاشی روی کاشی، دیوارهای گچی، محیط‌های خشک داخلی.
-                <br>- <em>معایب:</em> مقاومت کم در برابر رطوبت دائمی (مثل کف استخر)، قیمت بالاتر.</p>
-                <h4>نکات کلیدی در انتخاب</h4>
-                <ul>
-                    <li>برای <strong>سرامیک‌های پرسلان</strong> حتماً از چسب پودری حاوی لاتکس یا الیاف‌دار استفاده کنید، زیرا جذب آب پرسلان نزدیک به صفر است و ملات معمولی به آن نمی‌چسبد.</li>
-                    <li>برای <strong>سیستم گرمایش از کف</strong>، باید از چسب‌های منعطف (Flexible) استفاده شود تا در برابر انبساط و انقباض ترک نخورد.</li>
-                    <li>در <strong>نصب نما</strong>، استفاده از چسب‌های پرمقاومت به همراه اسکوپ کردن سنگ یا سرامیک برای ایمنی بیشتر توصیه می‌شود.</li>
-                </ul>
-                <p>شما می‌توانید انواع چسب‌های استاندارد شیمی ساختمان و ساروج را با مشاوره رایگان از مجموعه ما تهیه کنید.</p>
-            `
-        }
-    ];
-
-    function openBlog(id) {
-        const post = blogPostsDB.find(p => p.id === id);
-        if(!post) return;
-
-        document.getElementById('blogFullTitle').innerText = post.title;
-        document.getElementById('blogFullContent').innerHTML = post.content;
-        document.getElementById('blogFullDate').innerText = "تاریخ انتشار: " + post.date;
-
-        const modal = document.getElementById('blogModal');
-        modal.style.display = 'flex';
-        setTimeout(() => {
-            modal.classList.add('active');
-        }, 10);
-    }
-
-    function closeBlog() {
-        const modal = document.getElementById('blogModal');
-        modal.classList.remove('active');
-        setTimeout(() => {
-            modal.style.display = 'none';
-        }, 300);
     }
 
     /* =========================================
        6. توابع کمکی و عمومی
        ========================================= */
-    function openGallery(el, caption) {
-        const src = el.querySelector('img').src;
-        document.getElementById('galleryImg').src = src;
-        document.getElementById('galleryCaption').innerText = caption;
-        document.getElementById('galleryModal').style.display = 'flex';
-    }
-    
-    function closeGallery() {
-        document.getElementById('galleryModal').style.display = 'none';
-    }
-
     function togglePriceModal(){ 
         const modal = document.getElementById('priceModal');
         if(modal.classList.contains('active')) {
@@ -1545,18 +1440,6 @@
         let scrolled = (document.documentElement.scrollTop / (document.documentElement.scrollHeight - document.documentElement.clientHeight)) * 100;
         document.getElementById("progress-bar").style.width = scrolled + "%";
         document.getElementById("backToTop").style.display = document.documentElement.scrollTop > 400 ? "flex" : "none";
-        
-        const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('nav a');
-        let current = '';
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            if (scrollY >= sectionTop - 150) current = section.getAttribute('id');
-        });
-        navLinks.forEach(a => {
-            a.classList.remove('active');
-            if(a.getAttribute('href').includes(current)) a.classList.add('active');
-        });
     };
 
     const canvas = document.getElementById('hero-canvas'); 
@@ -1589,7 +1472,6 @@
             this.y += this.speedY; 
             if(this.x < 0 || this.x > canvas.width) this.speedX *= -1; 
             if(this.y < 0 || this.y > canvas.height) this.speedY *= -1; 
-            
             ctx.beginPath(); 
             ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); 
             ctx.fillStyle = `rgba(255,255,255,${this.opacity})`; 
@@ -1600,179 +1482,46 @@
     function animateParticles(){ 
         ctx.clearRect(0,0,canvas.width,canvas.height); 
         particles.forEach(p => p.update()); 
-        
-        for(let a=0; a<particles.length; a++){
-            for(let b=a; b<particles.length; b++){
-                let dx = particles[a].x - particles[b].x;
-                let dy = particles[a].y - particles[b].y;
-                let distance = Math.sqrt(dx*dx + dy*dy);
-                if(distance < 100){
-                    ctx.beginPath();
-                    ctx.strokeStyle = `rgba(255,255,255,${0.1 - distance/1000})`;
-                    ctx.lineWidth = 1;
-                    ctx.moveTo(particles[a].x, particles[a].y);
-                    ctx.lineTo(particles[b].x, particles[b].y);
-                    ctx.stroke();
-                }
-            }
-        }
         requestAnimationFrame(animateParticles); 
     }
     
     window.addEventListener('resize', resizeCanvas);
-    
 
     /* =========================================
        *** منطق ماشین حساب ***
        ========================================= */
     let isScientific = false;
-
     function openCalculator() {
         const modal = document.getElementById('calcModalOverlay');
         modal.style.display = 'flex';
         setTimeout(() => modal.classList.add('active'), 10);
     }
-
     function closeCalculator() {
         const modal = document.getElementById('calcModalOverlay');
         modal.classList.remove('active');
         setTimeout(() => modal.style.display = 'none', 300);
     }
-
     function toggleScientificMode() {
         isScientific = !isScientific;
         const box = document.querySelector('.calc-box');
         const sciRow = document.querySelector('.sci-row');
         const btn = document.getElementById('btnSciToggle');
-
         if (isScientific) {
-            box.classList.add('scientific');
-            sciRow.classList.remove('hidden');
-            btn.innerHTML = "<i class='bx bx-calculator'></i> بازگشت به حالت ساده";
-            btn.style.background = "rgba(5, 150, 105, 0.1)";
-            btn.style.color = "var(--primary-green)";
-            btn.style.borderColor = "var(--primary-green)";
+            box.classList.add('scientific'); sciRow.classList.remove('hidden');
         } else {
-            box.classList.remove('scientific');
-            sciRow.classList.add('hidden');
-            btn.innerHTML = "<i class='bx bx-microchip'></i> فعال‌سازی حالت مهندسی";
-            btn.style.background = "rgba(59, 130, 246, 0.1)";
-            btn.style.color = "var(--accent-blue)";
-            btn.style.borderColor = "var(--accent-blue)";
+            box.classList.remove('scientific'); sciRow.classList.add('hidden');
         }
     }
-
-    function calcInput(val) {
-        const display = document.getElementById('calcDisplay');
-        if (['+', '-', '*', '/', '%', '.'].includes(val)) {
-            const lastChar = display.value.slice(-1);
-            if (['+', '-', '*', '/', '%', '.'].includes(lastChar)) {
-                display.value = display.value.slice(0, -1) + val;
-                return;
-            }
-        }
-        display.value += val;
-    }
-
-    function calcClear() {
-        document.getElementById('calcDisplay').value = '';
-    }
-
+    function calcInput(val) { document.getElementById('calcDisplay').value += val; }
+    function calcClear() { document.getElementById('calcDisplay').value = ''; }
     function calcDelete() {
         const display = document.getElementById('calcDisplay');
         display.value = display.value.toString().slice(0, -1);
     }
-
     function calcResult() {
         const display = document.getElementById('calcDisplay');
-        let expr = display.value;
-
-        if (!expr) return;
-
-        try {
-            expr = expr.replace(/sin\(/g, 'Math.sin(');
-            expr = expr.replace(/cos\(/g, 'Math.cos(');
-            expr = expr.replace(/tan\(/g, 'Math.tan(');
-            expr = expr.replace(/log\(/g, 'Math.log10(');
-            expr = expr.replace(/sqrt\(/g, 'Math.sqrt(');
-            expr = expr.replace(/PI/g, 'Math.PI');
-            expr = expr.replace(/\^/g, '**');
-
-            const result = eval(expr);
-            
-            if (!Number.isInteger(result)) {
-                display.value = parseFloat(result.toFixed(8)); 
-            } else {
-                display.value = result;
-            }
-        } catch (e) {
-            display.value = 'Error';
-            setTimeout(() => calcClear(), 1500);
-        }
-        /* دیتابیس مقالات وبلاگ */
-const blogPostsDB = [
-    {
-        id: 1,
-        title: "مزایای استفاده از بلوک هبلکس در ساختمان‌های مدرن",
-        date: "1402/10/01",
-        content: `
-            <p>بلوک هبلکس (Heblex) یا بتن هوادار اتوکلاو شده، تحولی بزرگ در صنعت ساختمان ایجاد کرده است.</p>
-            <h4>چرا هبلکس را انتخاب کنیم؟</h4>
-            <ul>
-                <li><strong>عایق حرارت و صوت:</strong> ساختار متخلخل این بلوک‌ها باعث می‌شود تا ۵۰٪ از اتلاف انرژی جلوگیری شود.</li>
-                <li><strong>وزن سبک:</strong> وزن هبلکس حدود یک‌سوم آجر معمولی است که باعث کاهش بار مرده ساختمان می‌شود.</li>
-                <li><strong>سرعت اجرای بالا:</strong> ابعاد بزرگتر نسبت به آجر، سرعت دیوارچینی را تا ۳ برابر افزایش می‌دهد.</li>
-            </ul>
-            <p>این بلوک‌ها همچنین در برابر آتش‌سوزی بسیار مقاوم هستند و کارپذیری بالایی دارند.</p>
-        `
-    },
-    {
-        id: 2,
-        title: "تحلیل جامع قیمت سیمان و چالش‌های فصل زمستان",
-        date: "1402/09/25",
-        content: `
-            <p>صنعت سیمان در فصل زمستان با چالش‌های جدی گاز و حمل و نقل روبروست.</p>
-            <h4>نکات کلیدی بازار سیمان:</h4>
-            <p>با قطع شدن گاز صنایع، هزینه تولید بالا می‌رود. پیشنهاد می‌شود پروژه‌ها سیمان مورد نیاز خود را پیش از اوج سرما تامین کنند.</p>
-        `
-    },
-    {
-        id: 3,
-        title: "راهنمای تخصصی انتخاب چسب کاشی و سرامیک",
-        date: "1402/09/10",
-        content: `
-            <p>دوران استفاده از ماسه و سیمان برای نصب کاشی‌های مدرن به پایان رسیده است.</p>
-            <h4>انواع چسب‌های پیشنهادی:</h4>
-            <p>چسب‌های پودری پرسلان مخصوص سرامیک‌های بزرگ و چسب‌های خمیری برای بازسازی روی سطوح قدیمی بهترین انتخاب هستند.</p>
-        `
+        try { display.value = eval(display.value.replace(/\^/g, '**')); } catch (e) { display.value = 'Error'; }
     }
-];
-
-/* توابع باز و بسته کردن وبلاگ */
-function openBlog(id) {
-    const post = blogPostsDB.find(p => p.id === id);
-    if(!post) return;
-
-    document.getElementById('blogFullTitle').innerText = post.title;
-    document.getElementById('blogFullContent').innerHTML = post.content;
-    document.getElementById('blogFullDate').innerText = "تاریخ انتشار: " + post.date;
-
-    const modal = document.getElementById('blogModal');
-    modal.style.display = 'flex';
-    setTimeout(() => modal.classList.add('active'), 10);
-    document.body.style.overflow = 'hidden'; // جلوگیری از اسکرول صفحه زیرین
-}
-
-function closeBlog() {
-    const modal = document.getElementById('blogModal');
-    modal.classList.remove('active');
-    setTimeout(() => {
-        modal.style.display = 'none';
-        document.body.style.overflow = 'auto';
-    }, 300);
-}
-    }
-    
 </script>
 </body>
 </html>

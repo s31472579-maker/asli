@@ -3,7 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>بارمان مرکب کویر | مصالح ساختمانی</title>
+    <title>بارمان مرکب کویر | بزرگترین مرجع مصالح ساختمانی در یزد</title>
+    
+    <!-- بهینه‌سازی سئو پیشرفته -->
+    <meta name="description" content="بارمان مرکب کویر - تامین‌کننده انواع سیمان، آجر یزد، بلوک هبلکس، گچ، شن و ماسه، چسب ساختمانی و ایزوگام با بهترین قیمت و کیفیت در یزد و جنوب کشور">
+    <meta name="keywords" content="مصالح ساختمانی, سیمان یزد, آجر یزد, بلوک هبلکس, گچ ساختمانی, شن و ماسه, چسب کاشی, ایزوگام, بارمان مرکب">
+    <meta name="author" content="بارمان مرکب کویر">
+    <meta name="robots" content="index, follow">
+    
     <!-- فونت وزیرمتن -->
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
     <!-- boxicons -->
@@ -12,6 +19,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- AOS انیمیشن -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Swiper برای اسلایدر -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <style>
         * {
             margin: 0;
@@ -564,6 +573,175 @@
             border-radius: 40px;
             font-size: 0.9rem;
         }
+
+        /* کارت مشتریان */
+        .client-card {
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+            transition: 0.3s;
+        }
+
+        .client-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px -10px #059669;
+            border-color: #10b981;
+        }
+
+        /* اسلایدر */
+        .swiper {
+            width: 100%;
+            padding: 40px 0;
+        }
+
+        .swiper-slide {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.1);
+            border: 1px solid #e2e8f0;
+        }
+
+        .swiper-pagination-bullet-active {
+            background: #059669 !important;
+        }
+
+        /* تگ‌های ویژه */
+        .feature-tag {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #d1fae5;
+            color: #065f46;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: bold;
+        }
+
+        /* بخش گالری */
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: 0.4s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: -100%;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
+            transition: 0.4s;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            bottom: 0;
+        }
+
+        /* نظرات مشتریان */
+        .testimonial-card {
+            background: white;
+            border-radius: 30px;
+            padding: 30px;
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 6rem;
+            color: #05966920;
+            font-family: serif;
+        }
+
+        /* خبرنامه */
+        .newsletter-box {
+            background: linear-gradient(135deg, #059669, #10b981);
+            border-radius: 30px;
+            padding: 40px;
+            color: white;
+        }
+
+        /* تماس اضطراری */
+        .emergency-contact {
+            background: #fee2e2;
+            border: 2px solid #ef4444;
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        /* آیکون‌های پروژه */
+        .project-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 15px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #059669, #10b981);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: white;
+        }
+
+        /* دکمه‌های شبکه‌های اجتماعی جدید */
+        .social-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 25px;
+            border-radius: 50px;
+            color: white;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        
+        .social-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .btn-telegram {
+            background: #0088cc;
+        }
+        
+        .btn-telegram:hover {
+            background: #0077b3;
+        }
+        
+        .btn-instagram {
+            background: linear-gradient(45deg, #f09433, #d62976, #962fbf, #4f5bd5);
+        }
+        
+        .btn-instagram:hover {
+            opacity: 0.9;
+        }
     </style>
 </head>
 <body>
@@ -573,7 +751,7 @@
 
 <!-- پیش‌لودر -->
 <div id="preloader" style="position:fixed; top:0; left:0; width:100%; height:100%; background:#f8fafc; z-index:10000; display:flex; align-items:center; justify-content:center;">
-    <div style="width:60px; height:60px; border:5px solid #e2e8f0; border-top-color:#059669; border-radius:50%; animation:spin 1s infinite;"></div>
+    <div style="width:80px; height:80px; border:6px solid #e2e8f0; border-top-color:#059669; border-bottom-color:#10b981; border-radius:50%; animation:spin 1.2s linear infinite;"></div>
 </div>
 
 <style>@keyframes spin{to{transform:rotate(360deg);}}</style>
@@ -583,6 +761,9 @@
     <a href="#home" class="nav-link active"><i class='bx bx-home'></i><span class="hidden sm:inline">خانه</span></a>
     <a href="#about" class="nav-link"><i class='bx bx-info-circle'></i><span class="hidden sm:inline">درباره</span></a>
     <a href="#products" class="nav-link"><i class='bx bx-package'></i><span class="hidden sm:inline">محصولات</span></a>
+    <a href="#gallery" class="nav-link"><i class='bx bx-images'></i><span class="hidden sm:inline">گالری</span></a>
+    <a href="#clients" class="nav-link"><i class='bx bx-group'></i><span class="hidden sm:inline">مشتریان</span></a>
+    <a href="#testimonials" class="nav-link"><i class='bx bx-message-rounded-dots'></i><span class="hidden sm:inline">نظرات</span></a>
     <a href="#blog" class="nav-link"><i class='bx bx-news'></i><span class="hidden sm:inline">وبلاگ</span></a>
     <a href="#faq" class="nav-link"><i class='bx bx-question-mark'></i><span class="hidden sm:inline">سوالات</span></a>
     <a href="#contact" class="nav-link"><i class='bx bx-phone'></i><span class="hidden sm:inline">تماس</span></a>
@@ -591,8 +772,11 @@
 <!-- هدر -->
 <section id="home" class="parallax-header">
     <div class="relative z-10 px-4" data-aos="fade-up" data-aos-duration="1000">
+        <div class="mb-6">
+            <i class='bx bx-cube text-8xl text-emerald-400 floating' style="filter: drop-shadow(0 0 20px #10b981);"></i>
+        </div>
         <h1 class="title-3d floating">بارمان مرکب کویر</h1>
-        <p class="text-2xl md:text-3xl mt-6 text-amber-300">بزرگترین مرجع تخصصی مصالح ساختمانی در یزد</p>
+        <p class="text-2xl md:text-3xl mt-6 text-amber-300">بزرگترین مرجع تخصصی مصالح ساختمانی در یزد و جنوب کشور</p>
         <div class="mt-10 flex gap-4 justify-center flex-wrap">
             <button class="btn-primary text-lg" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">
                 <i class='bx bx-package ml-2'></i>محصولات ما
@@ -600,6 +784,16 @@
             <button class="btn-primary text-lg" style="background:#f59e0b" onclick="openContactModal()">
                 <i class='bx bx-support ml-2'></i>مشاوره رایگان
             </button>
+            <button class="btn-primary text-lg" style="background:#3b82f6" onclick="window.open('https://eitaa.com/AMojtabaMoosavi', '_blank')">
+                <i class='bx bx-chat ml-2'></i>پشتیبانی آنلاین
+            </button>
+        </div>
+        <div class="mt-8 flex gap-2 justify-center flex-wrap">
+            <span class="feature-tag">ضمانت اصالت</span>
+            <span class="feature-tag">ارسال سریع</span>
+            <span class="feature-tag">قیمت رقابتی</span>
+            <span class="feature-tag">مشاوره تخصصی</span>
+            <span class="feature-tag">پشتیبانی ۲۴/۷</span>
         </div>
     </div>
     <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce text-white text-4xl cursor-pointer" onclick="window.scrollTo({top: window.innerHeight, behavior:'smooth'})">
@@ -637,6 +831,10 @@
                         <span class="font-bold text-emerald-600">۱۴۰۰</span>
                         <p class="text-sm">توسعه ناوگان حمل و نقل به ۱۵ دستگاه</p>
                     </div>
+                    <div class="timeline-item">
+                        <span class="font-bold text-emerald-600">۱۴۰۴</span>
+                        <p class="text-sm">صادرات به کشورهای همسایه</p>
+                    </div>
                 </div>
 
                 <div class="flex gap-4 flex-wrap mt-6">
@@ -654,6 +852,7 @@
                 <div class="flex gap-3 mt-6 flex-wrap">
                     <span class="certificate-badge"><i class='bx bx-certification text-emerald-600'></i> ایزو ۹۰۰۱</span>
                     <span class="certificate-badge"><i class='bx bx-certification text-emerald-600'></i> استاندارد ملی</span>
+                    <span class="certificate-badge"><i class='bx bx-certification text-emerald-600'></i> نشان کیفیت</span>
                 </div>
             </div>
             
@@ -694,6 +893,14 @@
                     <div class="flex items-center gap-2 p-3 bg-gray-50 rounded-xl">
                         <i class='bx bx-package text-emerald-600 text-xl'></i>
                         <span class="text-sm">تنوع محصول</span>
+                    </div>
+                    <div class="flex items-center gap-2 p-3 bg-gray-50 rounded-xl">
+                        <i class='bx bx-trending-up text-emerald-600 text-xl'></i>
+                        <span class="text-sm">مشاوره تخصصی</span>
+                    </div>
+                    <div class="flex items-center gap-2 p-3 bg-gray-50 rounded-xl">
+                        <i class='bx bx-shield text-emerald-600 text-xl'></i>
+                        <span class="text-sm">گارانتی کیفیت</span>
                     </div>
                 </div>
             </div>
@@ -799,6 +1006,217 @@
                 </div>
             </div>
         </div>
+        
+        <div class="text-center mt-10">
+            <button class="btn-primary text-lg" onclick="openCatalogModal()">
+                <i class='bx bx-download'></i> دریافت کاتالوگ محصولات
+            </button>
+        </div>
+    </section>
+
+    <!-- گالری تصاویر - با آیکون به جای عکس برای جلوگیری از لود نشدن -->
+    <section id="gallery" class="glass-card p-8" data-aos="fade-up">
+        <div class="text-center mb-8">
+            <h2 class="text-3xl font-black mb-4">گالری <span class="text-emerald-600">تصاویر</span></h2>
+            <p class="text-gray-500">تصاویری از محصولات و پروژه‌های اجرا شده</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="gallery-item">
+                <div style="width:100%; height:250px; background: linear-gradient(135deg, #475569, #64748b); display:flex; align-items:center; justify-content:center;">
+                    <i class='bx bxs-component text-7xl text-white'></i>
+                </div>
+                <div class="gallery-overlay">
+                    <h4 class="font-bold">سیمان تیپ ۲</h4>
+                    <p class="text-sm">کیسه‌های ۵۰ کیلوگرمی</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div style="width:100%; height:250px; background: linear-gradient(135deg, #2563eb, #3b82f6); display:flex; align-items:center; justify-content:center;">
+                    <i class='bx bxs-cuboid text-7xl text-white'></i>
+                </div>
+                <div class="gallery-overlay">
+                    <h4 class="font-bold">بلوک هبلکس</h4>
+                    <p class="text-sm">عایق حرارتی و صوتی</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div style="width:100%; height:250px; background: linear-gradient(135deg, #b45309, #d97706); display:flex; align-items:center; justify-content:center;">
+                    <i class='bx bxs-grid-alt text-7xl text-white'></i>
+                </div>
+                <div class="gallery-overlay">
+                    <h4 class="font-bold">آجر یزد</h4>
+                    <p class="text-sm">آجر فشاری و سفال</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div style="width:100%; height:250px; background: linear-gradient(135deg, #6b7280, #9ca3af); display:flex; align-items:center; justify-content:center;">
+                    <i class='bx bxs-layer text-7xl text-white'></i>
+                </div>
+                <div class="gallery-overlay">
+                    <h4 class="font-bold">گچ و خاک</h4>
+                    <p class="text-sm">سفید ممتاز</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div style="width:100%; height:250px; background: linear-gradient(135deg, #b45309, #d97706); display:flex; align-items:center; justify-content:center;">
+                    <i class='bx bxs-pyramid text-7xl text-white'></i>
+                </div>
+                <div class="gallery-overlay">
+                    <h4 class="font-bold">شن و ماسه</h4>
+                    <p class="text-sm">دوبار شور</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div style="width:100%; height:250px; background: linear-gradient(135deg, #7e22ce, #9333ea); display:flex; align-items:center; justify-content:center;">
+                    <i class='bx bxs-droplet text-7xl text-white'></i>
+                </div>
+                <div class="gallery-overlay">
+                    <h4 class="font-bold">ایزوگام</h4>
+                    <p class="text-sm">ضخامت ۳ و ۴ میلیمتر</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- مشتریان ما (اسلایدر) - با آیکون به جای عکس -->
+    <section id="clients" data-aos="fade-up">
+        <div class="text-center mb-12">
+            <h2 class="text-5xl font-black mb-4">مشتریان <span class="text-emerald-600">ما</span></h2>
+            <p class="text-gray-500 max-w-2xl mx-auto">افتخار همکاری با بزرگترین پروژه‌های ساختمانی کشور</p>
+        </div>
+        
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="project-icon">
+                        <i class='bx bxs-building'></i>
+                    </div>
+                    <h4 class="text-xl font-bold mt-2">پروژه ۵۰۰ واحدی</h4>
+                    <p class="text-gray-500">یزد - ۱۴۰۳</p>
+                </div>
+                <div class="swiper-slide">
+                    <div class="project-icon">
+                        <i class='bx bxs-building-house'></i>
+                    </div>
+                    <h4 class="text-xl font-bold mt-2">مجتمع تجاری</h4>
+                    <p class="text-gray-500">یزد - ۱۴۰۲</p>
+                </div>
+                <div class="swiper-slide">
+                    <div class="project-icon">
+                        <i class='bx bxs-hotel'></i>
+                    </div>
+                    <h4 class="text-xl font-bold mt-2">هتل ۵ ستاره</h4>
+                    <p class="text-gray-500">یزد - ۱۴۰۱</p>
+                </div>
+                <div class="swiper-slide">
+                    <div class="project-icon">
+                        <i class='bx bxs-factory'></i>
+                    </div>
+                    <h4 class="text-xl font-bold mt-2">شهرک صنعتی</h4>
+                    <p class="text-gray-500">یزد - ۱۴۰۰</p>
+                </div>
+                <div class="swiper-slide">
+                    <div class="project-icon">
+                        <i class='bx bxs-school'></i>
+                    </div>
+                    <h4 class="text-xl font-bold mt-2">مجتمع آموزشی</h4>
+                    <p class="text-gray-500">یزد - ۱۴۰۳</p>
+                </div>
+                <div class="swiper-slide">
+                    <div class="project-icon">
+                        <i class='bx bxs-hospital'></i>
+                    </div>
+                    <h4 class="text-xl font-bold mt-2">بیمارستان</h4>
+                    <p class="text-gray-500">یزد - ۱۴۰۲</p>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+        
+        <!-- آمار مشتریان -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
+            <div class="client-card">
+                <i class='bx bx-building text-3xl text-emerald-600'></i>
+                <div class="font-bold text-xl mt-2">۱۵۰+</div>
+                <div class="text-sm text-gray-500">پروژه مسکونی</div>
+            </div>
+            <div class="client-card">
+                <i class='bx bx-store text-3xl text-emerald-600'></i>
+                <div class="font-bold text-xl mt-2">۸۰+</div>
+                <div class="text-sm text-gray-500">پروژه تجاری</div>
+            </div>
+            <div class="client-card">
+                <i class='bx bx-factory text-3xl text-emerald-600'></i>
+                <div class="font-bold text-xl mt-2">۴۰+</div>
+                <div class="text-sm text-gray-500">پروژه صنعتی</div>
+            </div>
+            <div class="client-card">
+                <i class='bx bx-hotel text-3xl text-emerald-600'></i>
+                <div class="font-bold text-xl mt-2">۲۵+</div>
+                <div class="text-sm text-gray-500">هتل و اقامتگاه</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- نظرات مشتریان -->
+    <section id="testimonials" class="glass-card p-8" data-aos="fade-up">
+        <div class="text-center mb-8">
+            <h2 class="text-3xl font-black mb-4">نظرات <span class="text-emerald-600">مشتریان</span></h2>
+            <p class="text-gray-500">آنچه مشتریان ما درباره بارمان می‌گویند</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="testimonial-card">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-600 font-bold text-xl">م.ر</div>
+                    <div>
+                        <h4 class="font-bold">مهندس محمد رضایی</h4>
+                        <div class="text-amber-400">★★★★★</div>
+                    </div>
+                </div>
+                <p class="text-gray-600">"با بارمان مرکب کویر برای پروژه ۵۰۰ واحدی همکاری داشتیم. کیفیت سیمان و آجر فوق‌العاده بود و تحویل به موقع انجام شد."</p>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-600 font-bold text-xl">ع.ک</div>
+                    <div>
+                        <h4 class="font-bold">علی کاظمی</h4>
+                        <div class="text-amber-400">★★★★★</div>
+                    </div>
+                </div>
+                <p class="text-gray-600">"برای خرید بلوک هبلکس با بارمان تماس گرفتم. مشاوره عالی دادند و قیمت مناسب. ارسال به موقع و با کیفیت عالی."</p>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-600 font-bold text-xl">س.ح</div>
+                    <div>
+                        <h4 class="font-bold">سعید حسینی</h4>
+                        <div class="text-amber-400">★★★★★</div>
+                    </div>
+                </div>
+                <p class="text-gray-600">"ایزوگام با ضمانت ۱۰ ساله از بارمان خریدم. بعد از دو سال هنوز مثل روز اول است. بسیار راضی هستم."</p>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-600 font-bold text-xl">ف.م</div>
+                    <div>
+                        <h4 class="font-bold">فاطمه محمدی</h4>
+                        <div class="text-amber-400">★★★★★</div>
+                    </div>
+                </div>
+                <p class="text-gray-600">"برای بازسازی خانه‌مان از چسب کاشی بارمان استفاده کردیم. کیفیت عالی و قیمت مناسب. پشتیبانی خوبی هم داشتند."</p>
+            </div>
+        </div>
+        
+        <div class="text-center mt-6">
+            <button class="btn-primary text-sm" onclick="openReviewModal()">
+                <i class='bx bx-pencil'></i> ثبت نظر شما
+            </button>
+        </div>
     </section>
 
     <!-- وبلاگ با مقالات کامل -->
@@ -897,10 +1315,32 @@
                     <p>بله، برای اکثر محصولات امکان مشاهده نمونه در انبار مرکزی وجود دارد. همچنین می‌توانید برای دریافت کاتالوگ و مشخصات فنی محصولات با ما تماس بگیرید.</p>
                 </div>
             </div>
+            <div class="border-b border-gray-200 pb-3">
+                <button class="flex justify-between items-center w-full text-right font-bold text-lg" onclick="toggleFaq(this)">
+                    تخفیف برای خرید عمده دارید؟
+                    <i class='bx bx-chevron-down text-2xl'></i>
+                </button>
+                <div class="faq-answer mt-2 text-gray-600">
+                    <p>بله، برای خریدهای بالای ۲۰ تن تخفیف ویژه در نظر گرفته شده است. برای پروژه‌های بزرگ، شرایط خاص قابل مذاکره است.</p>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- تماس با ما (بدون نقشه و فرم) -->
+    <!-- خبرنامه -->
+    <section class="newsletter-box" data-aos="fade-up">
+        <div class="text-center">
+            <i class='bx bx-envelope text-6xl mb-4'></i>
+            <h3 class="text-3xl font-bold mb-2">عضویت در خبرنامه</h3>
+            <p class="mb-6 opacity-90">با عضویت در خبرنامه، از تخفیف‌ها و جدیدترین محصولات با‌خبر شوید</p>
+            <div class="flex max-w-md mx-auto gap-2">
+                <input type="email" placeholder="ایمیل خود را وارد کنید" class="flex-1 p-3 rounded-r-xl border-0 focus:ring-2 focus:ring-white text-gray-900">
+                <button class="bg-white text-emerald-600 px-6 rounded-l-xl font-bold hover:bg-gray-100 transition">عضویت</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- تماس با ما - با دو گزینه تلگرام و اینستاگرام -->
     <section id="contact" class="glass-card p-8" data-aos="fade-up">
         <div class="text-center mb-8">
             <h2 class="text-3xl font-black mb-4">راه‌های ارتباطی</h2>
@@ -926,6 +1366,26 @@
                 <p class="text-gray-600">یزد، بلوار استقلال، میدان کسنویه، خیابان گلشن</p>
             </div>
         </div>
+        
+        <!-- شبکه‌های اجتماعی - فقط تلگرام و اینستاگرام -->
+        <div class="flex justify-center gap-4 mt-8 flex-wrap">
+            <a href="https://t.me/mojtaba6158" target="_blank" class="social-btn btn-telegram">
+                <i class='bx bxl-telegram text-2xl'></i>
+                <span>تلگرام: @mojtaba6158</span>
+            </a>
+            <a href="https://www.instagram.com/seid_mojtaba_musavi?igsh=MW40c3JyY2FucnZycw==" target="_blank" class="social-btn btn-instagram">
+                <i class='bx bxl-instagram text-2xl'></i>
+                <span>اینستاگرام: seid_mojtaba_musavi</span>
+            </a>
+        </div>
+        
+        <!-- تماس اضطراری - با شماره مدیر فروش -->
+        <div class="emergency-contact mt-8">
+            <i class='bx bx-error-circle text-4xl text-red-600'></i>
+            <h4 class="font-bold text-xl text-red-600">تماس اضطراری</h4>
+            <p class="text-gray-700">برای سفارش‌های فوری و پروژه‌های ویژه</p>
+            <a href="tel:09135256776" class="inline-block mt-2 bg-red-600 text-white px-6 py-2 rounded-full font-bold hover:bg-red-700 transition">09135256776</a>
+        </div>
     </section>
 </main>
 
@@ -945,10 +1405,8 @@
             <h3 class="text-xl font-bold mb-4 text-emerald-400">بارمان مرکب کویر</h3>
             <p class="text-gray-400 text-sm leading-relaxed">تامین کننده برتر مصالح ساختمانی در استان یزد و جنوب کشور با ۱۸ سال سابقه درخشان</p>
             <div class="flex gap-3 mt-4">
-                <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-emerald-600 transition"><i class='bx bxl-instagram'></i></a>
-                <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-emerald-600 transition"><i class='bx bxl-telegram'></i></a>
-                <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-emerald-600 transition"><i class='bx bxl-whatsapp'></i></a>
-                <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-emerald-600 transition"><i class='bx bxl-linkedin'></i></a>
+                <a href="https://t.me/mojtaba6158" target="_blank" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-emerald-600 transition"><i class='bx bxl-telegram'></i></a>
+                <a href="https://www.instagram.com/seid_mojtaba_musavi?igsh=MW40c3JyY2FucnZycw==" target="_blank" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-emerald-600 transition"><i class='bx bxl-instagram'></i></a>
             </div>
         </div>
         
@@ -956,10 +1414,11 @@
             <h4 class="font-bold mb-4 text-white">دسترسی سریع</h4>
             <ul class="space-y-2 text-gray-400">
                 <li><a href="#products" class="hover:text-emerald-400 transition">محصولات</a></li>
+                <li><a href="#gallery" class="hover:text-emerald-400 transition">گالری</a></li>
                 <li><a href="#blog" class="hover:text-emerald-400 transition">وبلاگ</a></li>
                 <li><a href="#faq" class="hover:text-emerald-400 transition">سوالات متداول</a></li>
                 <li><a href="#contact" class="hover:text-emerald-400 transition">تماس با ما</a></li>
-                <li><a href="#" class="hover:text-emerald-400 transition">درباره ما</a></li>
+                <li><a href="#about" class="hover:text-emerald-400 transition">درباره ما</a></li>
             </ul>
         </div>
         
@@ -971,6 +1430,7 @@
                 <li><a href="#" class="hover:text-emerald-400 transition">آجر یزد</a></li>
                 <li><a href="#" class="hover:text-emerald-400 transition">گچ و خاک</a></li>
                 <li><a href="#" class="hover:text-emerald-400 transition">ایزوگام</a></li>
+                <li><a href="#" class="hover:text-emerald-400 transition">چسب و افزودنی</a></li>
             </ul>
         </div>
         
@@ -984,6 +1444,7 @@
             <div class="mt-4">
                 <p class="text-gray-400 text-sm"><i class='bx bx-phone'></i> تلفن: ۰۳۵-۱۲۳۴۵۶۷۸</p>
                 <p class="text-gray-400 text-sm mt-1"><i class='bx bx-envelope'></i> ایمیل: info@barmankavir.ir</p>
+                <p class="text-gray-400 text-sm mt-1"><i class='bx bx-time'></i> ساعات کاری: ۸ صبح تا ۸ شب</p>
             </div>
         </div>
     </div>
@@ -994,11 +1455,23 @@
     </div>
 </footer>
 
-<!-- دکمه‌های شناور (فقط مشاوره آنلاین) -->
+<!-- دکمه‌های شناور -->
 <div class="floating-buttons">
     <button class="float-btn" onclick="openChat()">
         <i class='bx bx-chat'></i>
         <span class="tooltip">مشاوره آنلاین</span>
+    </button>
+    <button class="float-btn" style="background:#f59e0b" onclick="openContactModal()">
+        <i class='bx bx-phone-call'></i>
+        <span class="tooltip">درخواست مشاوره</span>
+    </button>
+    <button class="float-btn" style="background:#3b82f6" onclick="openCatalogModal()">
+        <i class='bx bx-download'></i>
+        <span class="tooltip">دانلود کاتالوگ</span>
+    </button>
+    <button class="float-btn" style="background:#ef4444" onclick="window.location.href='tel:09135256776'">
+        <i class='bx bx-error'></i>
+        <span class="tooltip">تماس اضطراری</span>
     </button>
 </div>
 
@@ -1073,13 +1546,71 @@
     </div>
 </div>
 
+<!-- مودال کاتالوگ -->
+<div id="catalogModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-[1000] hidden items-center justify-center">
+    <div class="bg-white rounded-3xl p-8 max-w-md w-full m-4">
+        <h3 class="text-2xl font-bold mb-4">دریافت کاتالوگ</h3>
+        <p class="text-gray-600 mb-4">برای دریافت کاتالوگ کامل محصولات، اطلاعات زیر را وارد کنید:</p>
+        <input type="text" placeholder="نام و نام خانوادگی" class="w-full p-3 border rounded-xl mb-3">
+        <input type="tel" placeholder="شماره تماس" class="w-full p-3 border rounded-xl mb-3">
+        <input type="email" placeholder="ایمیل" class="w-full p-3 border rounded-xl mb-3">
+        <button class="btn-primary w-full mb-3">دریافت کاتالوگ</button>
+        <button class="text-red-500 w-full" onclick="closeCatalogModal()">بستن</button>
+    </div>
+</div>
+
+<!-- مودال ثبت نظر -->
+<div id="reviewModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-[1000] hidden items-center justify-center">
+    <div class="bg-white rounded-3xl p-8 max-w-md w-full m-4">
+        <h3 class="text-2xl font-bold mb-4">ثبت نظر شما</h3>
+        <div class="flex justify-center gap-2 mb-4 text-3xl text-gray-300">
+            <i class='bx bx-star cursor-pointer hover:text-amber-400' onclick="setRating(1)"></i>
+            <i class='bx bx-star cursor-pointer hover:text-amber-400' onclick="setRating(2)"></i>
+            <i class='bx bx-star cursor-pointer hover:text-amber-400' onclick="setRating(3)"></i>
+            <i class='bx bx-star cursor-pointer hover:text-amber-400' onclick="setRating(4)"></i>
+            <i class='bx bx-star cursor-pointer hover:text-amber-400' onclick="setRating(5)"></i>
+        </div>
+        <input type="text" placeholder="نام شما" class="w-full p-3 border rounded-xl mb-3">
+        <textarea placeholder="نظر شما" class="w-full p-3 border rounded-xl mb-3" rows="4"></textarea>
+        <button class="btn-primary w-full mb-3">ثبت نظر</button>
+        <button class="text-red-500 w-full" onclick="closeReviewModal()">بستن</button>
+    </div>
+</div>
+
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
     // Initialize AOS
     AOS.init({
         duration: 800,
         once: true,
         offset: 100
+    });
+
+    // Initialize Swiper
+    const swiper = new Swiper('.mySwiper', {
+        slidesPerView: 1,
+        spaceBetween: 30,
+        loop: true,
+        autoplay: {
+            delay: 2500,
+            disableOnInteraction: false,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        breakpoints: {
+            640: {
+                slidesPerView: 2,
+            },
+            768: {
+                slidesPerView: 3,
+            },
+            1024: {
+                slidesPerView: 4,
+            },
+        },
     });
 
     // پیش‌لودر
@@ -1467,10 +1998,55 @@
         document.body.style.overflow = 'auto';
     }
 
+    function openCatalogModal() {
+        document.getElementById('catalogModal').style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeCatalogModal() {
+        document.getElementById('catalogModal').style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+
+    function openReviewModal() {
+        document.getElementById('reviewModal').style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeReviewModal() {
+        document.getElementById('reviewModal').style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+
+    function setRating(star) {
+        for(let i = 1; i <= 5; i++) {
+            const element = document.querySelectorAll('.bx-star')[i-1];
+            element.classList.remove('bxs-star');
+            element.classList.add('bx-star');
+            if(i <= star) {
+                element.classList.remove('bx-star');
+                element.classList.add('bxs-star');
+                element.style.color = '#fbbf24';
+            }
+        }
+    }
+
     // بستن مودال تماس با کلیک خارج
     document.getElementById('contactModal').addEventListener('click', function(e) {
         if (e.target === this) {
             closeContactModal();
+        }
+    });
+
+    document.getElementById('catalogModal').addEventListener('click', function(e) {
+        if (e.target === this) {
+            closeCatalogModal();
+        }
+    });
+
+    document.getElementById('reviewModal').addEventListener('click', function(e) {
+        if (e.target === this) {
+            closeReviewModal();
         }
     });
 

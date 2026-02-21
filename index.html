@@ -224,7 +224,7 @@
 
         .parallax-header {
             height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1589939705384-5185137a7f0f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
             background-attachment: fixed;
             background-position: center;
             background-repeat: no-repeat;
@@ -710,21 +710,27 @@
             color: white;
         }
 
-        /* دکمه‌های شبکه‌های اجتماعی جدید */
+        /* دکمه‌های شبکه‌های اجتماعی جدید - کوچک‌تر شده */
         .social-btn {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            padding: 10px 25px;
-            border-radius: 50px;
+            gap: 6px;
+            padding: 8px 18px;
+            border-radius: 40px;
             color: white;
-            font-weight: bold;
+            font-weight: 500;
+            font-size: 0.9rem;
             transition: 0.3s;
+            text-decoration: none;
+        }
+        
+        .social-btn i {
+            font-size: 1.2rem;
         }
         
         .social-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
         }
         
         .btn-telegram {
@@ -741,6 +747,15 @@
         
         .btn-instagram:hover {
             opacity: 0.9;
+        }
+
+        /* عکس هدر جدید */
+        .parallax-header {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1589939705384-5185137a7f0f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
         }
     </style>
 </head>
@@ -1340,7 +1355,7 @@
         </div>
     </section>
 
-    <!-- تماس با ما - با دو گزینه تلگرام و اینستاگرام -->
+    <!-- تماس با ما - با دو گزینه تلگرام و اینستاگرام (کوچک‌تر) -->
     <section id="contact" class="glass-card p-8" data-aos="fade-up">
         <div class="text-center mb-8">
             <h2 class="text-3xl font-black mb-4">راه‌های ارتباطی</h2>
@@ -1367,14 +1382,14 @@
             </div>
         </div>
         
-        <!-- شبکه‌های اجتماعی - فقط تلگرام و اینستاگرام -->
-        <div class="flex justify-center gap-4 mt-8 flex-wrap">
+        <!-- شبکه‌های اجتماعی - فقط تلگرام و اینستاگرام (کوچک‌تر شده) -->
+        <div class="flex justify-center gap-3 mt-6 flex-wrap">
             <a href="https://t.me/mojtaba6158" target="_blank" class="social-btn btn-telegram">
-                <i class='bx bxl-telegram text-2xl'></i>
+                <i class='bx bxl-telegram'></i>
                 <span>تلگرام: @mojtaba6158</span>
             </a>
             <a href="https://www.instagram.com/seid_mojtaba_musavi?igsh=MW40c3JyY2FucnZycw==" target="_blank" class="social-btn btn-instagram">
-                <i class='bx bxl-instagram text-2xl'></i>
+                <i class='bx bxl-instagram'></i>
                 <span>اینستاگرام: seid_mojtaba_musavi</span>
             </a>
         </div>
